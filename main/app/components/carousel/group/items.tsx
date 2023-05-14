@@ -1,7 +1,7 @@
-'use client'
+'use client';
 
 import React from 'react';
-import ProductCard from '../product';
+import ProductCard from '../../product';
 
 interface Props {
   items: any[];

@@ -3,6 +3,7 @@
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
 import Items from './items';
 import React from 'react';
+import {motion} from 'framer-motion'
 
 interface Props {
   carouselData: any[];
