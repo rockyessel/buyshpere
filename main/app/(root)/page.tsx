@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Carousel } from '@/app/components';
+import { Carousel, MegaCarousel } from '@/app/components';
 import { motion } from 'framer-motion';
 import { productData } from '@/app/utils/constants';
 
@@ -43,6 +43,11 @@ export default function Home() {
       <motion.section>
         <motion.p>Popular Products</motion.p>
         <Carousel data={productData} itemsPerGroup={5} />
+      </motion.section>
+
+
+      <motion.section>
+        <MegaCarousel />
       </motion.section>
     </main>
   );

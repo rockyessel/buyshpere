@@ -46,6 +46,8 @@ const Carousel = (props: Props) => {
     };
   }, [itemsPerGroup, props?.data]);
 
+  console.log('carouselData',carouselData.length);
+
   return <Wrapper carouselData={carouselData} />;
 };
 
