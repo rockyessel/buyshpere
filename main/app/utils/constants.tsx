@@ -1,21 +1,21 @@
-export const responsive = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 3,
-    partialVisibilityGutter: 60,
-    slidesToSlide: 3, // optional, default to 1.
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 2,
-    partialVisibilityGutter: 50,
-    slidesToSlide: 2, // optional, default to 1.
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-    partialVisibilityGutter: 30,
-  },
+import React from 'react';
+
+export const handleResize = (
+  setItemsPerGroup: React.Dispatch<React.SetStateAction<number>>
+) => {
+  const screenWidth = window.innerWidth;
+  // Adjust the number of items per group based on the screen width
+  if (screenWidth < 640) {
+    setItemsPerGroup(1);
+  } else if (screenWidth < 768) {
+    setItemsPerGroup(2);
+  } else if (screenWidth < 1024) {
+    setItemsPerGroup(3);
+  } else if (screenWidth < 1280) {
+    setItemsPerGroup(4);
+  } else {
+    setItemsPerGroup(5);
+  }
 };
 
 export const productData = [
@@ -84,3 +84,28 @@ export const productData = [
     description: 'Some text about the product..',
   },
 ];
+
+export const convertToCarouselData = (
+  data: any[],
+  dataItemsPerGroup: number
+) => {
+  const carouselData = [];
+  let currentItemGroup = [];
+
+  for (let i = 0; i < data.length; i++) {
+    const item = data[i];
+    currentItemGroup.push(item);
+
+    if (
+      currentItemGroup.length === dataItemsPerGroup ||
+      i === data.length - 1
+    ) {
+      carouselData.push(currentItemGroup);
+      currentItemGroup = [];
+    }
+  }
+
+  console.log('carouselData', carouselData);
+
+  return carouselData;
+};
